@@ -1,6 +1,7 @@
 -- |
 
 module Basic where
+import Data.Char (toUpper)
 
 -- variable (immutable)
 one :: Int
@@ -58,3 +59,13 @@ isPrime 1 = False
 isPrime n = smallestDivisor n == n
 
 biggestPrimeAtMost n = if isPrime n then n else biggestPrimeAtMost (n-1)
+
+maxBy measure a b = if measure a > measure b then a else b
+
+mapMaybe f Nothing = Nothing
+mapMaybe f (Just x) = Just $ f x
+
+firstHalf xs = take (div (length xs + 1) 2) xs
+
+capitalize :: String -> String
+capitalize xs = unwords (map (\s -> toUpper (head s) : tail s) (words xs))
